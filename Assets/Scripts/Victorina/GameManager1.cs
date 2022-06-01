@@ -10,7 +10,7 @@ public class GameManager1 : MonoBehaviour
     public GameObject bad;
     public GameObject Vic;
     int x;
-    int y;
+    public int y = 0;
     GameObject scoreTxt;
 
     public enum GameManagerState
@@ -32,6 +32,7 @@ public class GameManager1 : MonoBehaviour
     void Start()
     {
         scoreTxt = GameObject.FindGameObjectWithTag("Score");
+        x = 0;
     }
 
     void UpdateGameManagerState()
@@ -43,8 +44,10 @@ public class GameManager1 : MonoBehaviour
                 if (y == 2)
                 {
                     Vic.SetActive(true);
+                    x = 0;
                 }
-                else ChangeToHold();
+                
+                Debug.Log(y);
 
 
                 break;
@@ -115,6 +118,7 @@ public class GameManager1 : MonoBehaviour
     }
     public void Addlamp()
     {
-        y += 1;
+        y = y + 1;
+        Debug.Log(y);
     }
 }
