@@ -24,4 +24,12 @@ public class GoBack : MonoBehaviour
     {
         SceneManager.LoadScene(4);
     }
+    public void goToSpaceShooter()
+    {
+        SceneManager.LoadScene(6);
+    }
+    public void goToSpaceKabinet()
+    {
+        SceneManager.LoadScene(5);
+    }
 }

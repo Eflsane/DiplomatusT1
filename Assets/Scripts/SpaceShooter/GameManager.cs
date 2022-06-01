@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject player;
     public GameObject enemySpawner;
-
+    public GameObject Tutorial;
     public GameObject GameOver;
     public GameObject Score;
     public GameObject Score1;
@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
 
     public enum GameManagerState 
     { 
+        Tutoria,
         Opening,
         
         GameOver,
@@ -29,20 +30,22 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GMState = GameManagerState.Opening;
+        GMState = GameManagerState.Tutoria;
     }
 
     void UpdateGameManagerState() 
     {
         switch (GMState)
         {
+            case GameManagerState.Tutoria:
+
+                Tutorial.SetActive(true);
+                Scorecont.SetActive(false);
+                break;
+
             case GameManagerState.Opening:
 
-                player.GetComponent<PlayerMove>().Init();
-                enemySpawner.GetComponent<EnemySpawner>().StartSpawn();
-                GameOver.SetActive(false);
-                Score.GetComponent<GameScore>().Score = 0;
-                Score1.GetComponent<GameScore>().Score = 0;
+                StartThisShit();
                 break;
             
             case GameManagerState.GameOver:
@@ -89,5 +92,19 @@ public class GameManager : MonoBehaviour
         ScoreRes.GetComponent<GameScore>().Score = x;
     }
 
+    public void ChangeToOState()
+    {
+        SetGameManagerState(GameManagerState.Opening);
+    }
+    public void StartThisShit()
+    {
+        Scorecont.SetActive(true);
+        Tutorial.SetActive(false);
+        player.GetComponent<PlayerMove>().Init();
+        enemySpawner.GetComponent<EnemySpawner>().StartSpawn();
+        GameOver.SetActive(false);
+        Score.GetComponent<GameScore>().Score = 0;
+        Score1.GetComponent<GameScore>().Score = 0;
+    }
 
 }

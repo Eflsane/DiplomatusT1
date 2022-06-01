@@ -36,11 +36,6 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         
-        lives = MaxLives;
-        Hp1.SetActive(true);
-        Hp2.SetActive(true);
-        Hp3.SetActive(true);
-        gameObject.SetActive(true);
     }
 
     // Update is called once per frame

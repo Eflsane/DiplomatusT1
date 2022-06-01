@@ -15,9 +15,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Map.unity
     guid: 5bd6ed752072df44b82defefb31fa03d
   - enabled: 1
+    path: Assets/Scenes/GameLoby 1.unity
+    guid: 8030087095d37cc4188a8e32b38f46f5
+  - enabled: 1
+    path: Assets/Scenes/Libra.unity
+    guid: 0b1edde772833624ea6051745894ea54
+  - enabled: 1
+    path: Assets/Scenes/Kabinet.unity
+    guid: f7d63e1bcd683f44d9c1c18c09299431
+  - enabled: 1
     path: Assets/Scenes/Games.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: Assets/Scenes/Knowbase.unity
-    guid: 2372eb0915d4af04fabd2430938fe3a0
   m_configObjects: {}

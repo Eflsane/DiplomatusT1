@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rotation1 : MonoBehaviour
+public class MenuRot : MonoBehaviour
 {
     [SerializeField]
     public float speed;
@@ -16,6 +16,6 @@ public class Rotation1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(speed * Time.deltaTime, 0, 0, Space.Self);
+        transform.Rotate(speed * Time.deltaTime, speed * Time.deltaTime, speed * Time.deltaTime, Space.Self);
     }
 }
