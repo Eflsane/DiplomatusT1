@@ -628,7 +628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f43390e0e0836ef4a8d05372027b8154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dataURL: https://localhost:7191/api/Users
+  dataURL: http://cosmopedia.somee.com/WebApiAdoServer/api/users
 --- !u!114 &397849052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -641,7 +641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a32ec57542c70c4abd5d25f7028243c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dataURL: https://localhost:7191/api/UserMinigameStats
+  dataURL: http://cosmopedia.somee.com/WebApiAdoServer/api/UserMinigameStats
 --- !u!114 &397849053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -654,7 +654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22cd9e704bdf4f3468f8a706e8bdf4b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dataURL: https://localhost:7191/api/Genders
+  dataURL: http://cosmopedia.somee.com/WebApiAdoServer/api/genders
 --- !u!1 &511316033
 GameObject:
   m_ObjectHideFlags: 0
