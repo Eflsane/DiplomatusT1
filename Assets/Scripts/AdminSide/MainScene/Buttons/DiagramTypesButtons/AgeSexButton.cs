@@ -17,6 +17,7 @@ public class AgeSexButton : MonoBehaviour
         GetComponent<DiagramTypesButtons>().OnAgeSexButtonClick += ASButton_OnBasicButtonClick;
         GetComponent<DiagramTypesButtons>().OnUserButtonClick += OnOtherButtonClick;
         GetComponent<DiagramTypesButtons>().OnMinigameButtonClick += OnOtherButtonClick;
+        GetComponent<DiagramTypesButtons>().OnMaterialButtonClick += OnOtherButtonClick;
     }
 
     private void ASButton_OnBasicButtonClick()

@@ -102,7 +102,7 @@ public class AboutUserController : MonoBehaviour
         ParamsList[1].text = usersWithout[selectedUserIndex].Email;
         ParamsList[2].text = Genders[(int)usersWithout[selectedUserIndex].Gender - 1].Gender;
         ParamsList[3].text = (DateTime.Now.Year - usersWithout[selectedUserIndex].DateOfBirth.Year).ToString();
-        ParamsList[4].text = (DateTime.Now- usersWithout[selectedUserIndex].RegisterDate).Days.ToString();
+        ParamsList[4].text = usersWithout[selectedUserIndex].RegisterDate.ToShortDateString();
         ParamsList[6].text = usersWithout[selectedUserIndex].Coinz.ToString();
     }
 

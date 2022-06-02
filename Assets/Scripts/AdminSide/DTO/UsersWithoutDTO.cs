@@ -84,18 +84,18 @@ public class UsersWithoutDTO : MonoBehaviour
         OnGetUserSuccess?.Invoke(usersWithout);
     }
 
-    public void UpdateUserCoinz(string username)
+    public void UpdateUserCoinz(UsersWithout user)
     {
         Debug.Log("startGettingUsrData");
-        StartCoroutine(UpdateUserCoinzCoroutine(username));
+        StartCoroutine(UpdateUserCoinzCoroutine(user));
     }
 
-    private IEnumerator UpdateUserCoinzCoroutine(string username)
+    private IEnumerator UpdateUserCoinzCoroutine(UsersWithout user)
     {
-        string input = Newtonsoft.Json.JsonConvert.SerializeObject(username);
+        string input = Newtonsoft.Json.JsonConvert.SerializeObject(user);
         byte[] bytesIn = Encoding.UTF8.GetBytes(input);
 
-        UnityWebRequest request = new UnityWebRequest($"{dataURL}/update/{username}", "put");
+        UnityWebRequest request = new UnityWebRequest($"{dataURL}/update/{user.Username}", "put");
         request.SetRequestHeader("Content-Type", "application/json");
         request.uploadHandler = new UploadHandlerRaw(bytesIn);
         request.downloadHandler = new DownloadHandlerBuffer();
