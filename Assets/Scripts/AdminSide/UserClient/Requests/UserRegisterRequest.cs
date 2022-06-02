@@ -53,7 +53,8 @@ public class UserRegisterRequest : MonoBehaviour
                 Email = emailText.text,
                 DateOfBirth = DateTime.ParseExact(dateOfBirthText.text, "yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture),
                 Gender = sexText.text == "ж" ? 1 : 2,
-                AvatarID = avatarID
+                AvatarID = avatarID,
+                Coinz = 150
             };
 
             UsersWithoutLoginDTO.Instance.OnRegUserSuccess += FinishReg;

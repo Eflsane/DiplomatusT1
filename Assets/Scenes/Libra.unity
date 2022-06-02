@@ -3724,6 +3724,7 @@ GameObject:
   m_Component:
   - component: {fileID: 370210688}
   - component: {fileID: 370210689}
+  - component: {fileID: 370210690}
   m_Layer: 0
   m_Name: DTOManager
   m_TagString: Untagged
@@ -3758,6 +3759,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataURL: https://localhost:7191/api/Users
+--- !u!114 &370210690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370210687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 821cf501d1d84f84880475da6802eddb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataURL: https://localhost:7191/api/UserOpennedMaterial
 --- !u!1 &377759800
 GameObject:
   m_ObjectHideFlags: 0
@@ -4193,6 +4207,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1724479352}
+        m_MethodName: OpenMaterial
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -8596,9 +8621,9 @@ MonoBehaviour:
   - {fileID: 998534835}
   - {fileID: 1267831817}
   closedMats:
-  - {fileID: 1239008657}
   - {fileID: 993881481}
-  openedMats: []
+  openedMats:
+  - {fileID: 1724479348}
   usernameText: {fileID: 598465112}
   coinzText: {fileID: 1756262623}
   coinz: 0
@@ -10940,13 +10965,14 @@ GameObject:
   - component: {fileID: 991926789}
   - component: {fileID: 991926791}
   - component: {fileID: 991926790}
+  - component: {fileID: 991926792}
   m_Layer: 5
   m_Name: AcTualLock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &991926789
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11007,6 +11033,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 991926788}
   m_CullTransparentMesh: 0
+--- !u!114 &991926792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991926788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47deb966eba8c00419c83762324a6593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  price: 150
 --- !u!1 &993881481
 GameObject:
   m_ObjectHideFlags: 0
@@ -11968,6 +12007,17 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 817808871}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -13731,7 +13781,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1239008658
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19504,6 +19554,7 @@ GameObject:
   - component: {fileID: 1724479349}
   - component: {fileID: 1724479351}
   - component: {fileID: 1724479350}
+  - component: {fileID: 1724479352}
   m_Layer: 5
   m_Name: AcTualLock (1)
   m_TagString: Untagged
@@ -19571,6 +19622,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1724479348}
   m_CullTransparentMesh: 0
+--- !u!114 &1724479352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724479348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47deb966eba8c00419c83762324a6593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  price: 150
 --- !u!1 &1737774868
 GameObject:
   m_ObjectHideFlags: 0
