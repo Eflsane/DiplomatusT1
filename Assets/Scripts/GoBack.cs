@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GoBack : MonoBehaviour
 {
+    public string prefUserName = "CosmopediaSysUserName";
+
     public void goBack() 
     {
         SceneManager.LoadScene(1);

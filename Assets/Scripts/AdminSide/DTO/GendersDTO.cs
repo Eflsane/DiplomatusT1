@@ -10,6 +10,7 @@ public class GendersDTO : MonoBehaviour
     public string dataURL = string.Empty;
 
     public event Action<List<Genders>> OnGetAllGendersSuccess = (List<Genders> dbGenders) => { };
+    public event Action<Genders> OnGetGenderSuccess = (Genders dbGenders) => { };
     // Start is called before the first frame update
     void Awake()
     {
@@ -51,5 +52,33 @@ public class GendersDTO : MonoBehaviour
         Debug.Log(genders[0].Gender);
 
         OnGetAllGendersSuccess?.Invoke(genders);
+    }
+
+    public void GetGender(long id)
+    {
+        Debug.Log("startGettingParams");
+        StartCoroutine(GetGenderCoroutine(id));
+    }
+
+    private IEnumerator GetGenderCoroutine(long id)
+    {
+
+        UnityWebRequest request = new UnityWebRequest($"{dataURL}/{id}", "get");
+        request.SetRequestHeader("Content-Type", "application/json");
+        request.downloadHandler = new DownloadHandlerBuffer();
+
+        yield return request.SendWebRequest();
+        if (request.isHttpError || request.isNetworkError)
+        {
+            Debug.Log("ParamsGetMess:" + request.error);
+            yield break;
+        }
+
+        Debug.Log("endParamsGet:" + request.responseCode.ToString());
+
+        Genders gender = Newtonsoft.Json.JsonConvert.DeserializeObject<Genders>(request.downloadHandler.text);
+        Debug.Log(gender.Gender);
+
+        OnGetGenderSuccess?.Invoke(gender);
     }
 }

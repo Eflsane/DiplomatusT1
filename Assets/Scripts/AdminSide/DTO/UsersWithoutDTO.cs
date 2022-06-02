@@ -13,6 +13,8 @@ public class UsersWithoutDTO : MonoBehaviour
 
     public event Action<List<UsersWithout>> OnGetAllUsersSuccess = (List<UsersWithout> dbUsersWithout) => { };
     public event Action<UsersWithout> OnGetUserSuccess = (UsersWithout dbUsersWithout) => { };
+    public event Action OnGUpdateCoinzSuccess = () => { };
+   
     // Start is called before the first frame update
     void Awake()
     {
@@ -63,12 +65,8 @@ public class UsersWithoutDTO : MonoBehaviour
 
     private IEnumerator GetUserCoroutine(string username)
     {
-        string input = Newtonsoft.Json.JsonConvert.SerializeObject(username);
-        byte[] bytesIn = Encoding.UTF8.GetBytes(input);
-
         UnityWebRequest request = new UnityWebRequest($"{dataURL}/{username}", "get");
         request.SetRequestHeader("Content-Type", "application/json");
-        request.uploadHandler = new UploadHandlerRaw(bytesIn);
         request.downloadHandler = new DownloadHandlerBuffer();
 
         yield return request.SendWebRequest();
@@ -84,5 +82,36 @@ public class UsersWithoutDTO : MonoBehaviour
         Debug.Log(usersWithout.RegisterDate);
 
         OnGetUserSuccess?.Invoke(usersWithout);
+    }
+
+    public void UpdateUserCoinz(string username)
+    {
+        Debug.Log("startGettingUsrData");
+        StartCoroutine(UpdateUserCoinzCoroutine(username));
+    }
+
+    private IEnumerator UpdateUserCoinzCoroutine(string username)
+    {
+        string input = Newtonsoft.Json.JsonConvert.SerializeObject(username);
+        byte[] bytesIn = Encoding.UTF8.GetBytes(input);
+
+        UnityWebRequest request = new UnityWebRequest($"{dataURL}/update/{username}", "put");
+        request.SetRequestHeader("Content-Type", "application/json");
+        request.uploadHandler = new UploadHandlerRaw(bytesIn);
+        request.downloadHandler = new DownloadHandlerBuffer();
+
+        yield return request.SendWebRequest();
+        if (request.isHttpError || request.isNetworkError)
+        {
+            Debug.Log("DataGetMess:" + request.error);
+            yield break;
+        }
+
+        Debug.Log("endDataGet:" + request.responseCode.ToString());
+
+        //UsersWithout usersWithout = Newtonsoft.Json.JsonConvert.DeserializeObject<UsersWithout>(request.downloadHandler.text);
+        //sDebug.Log(usersWithout.RegisterDate);
+
+        OnGUpdateCoinzSuccess?.Invoke();
     }
 }
