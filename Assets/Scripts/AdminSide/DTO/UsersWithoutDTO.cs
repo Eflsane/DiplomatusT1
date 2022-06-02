@@ -107,7 +107,7 @@ public class UsersWithoutDTO : MonoBehaviour
             yield break;
         }
 
-        Debug.Log("endDataGet:" + request.responseCode.ToString());
+        Debug.Log("endDataGet:" + request.responseCode.ToString()); 
 
         //UsersWithout usersWithout = Newtonsoft.Json.JsonConvert.DeserializeObject<UsersWithout>(request.downloadHandler.text);
         //sDebug.Log(usersWithout.RegisterDate);

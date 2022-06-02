@@ -63,6 +63,7 @@ public class UserMaterialsRequest : MonoBehaviour
         UsersWithoutDTO.Instance.GetUser(Username);
 
         UserOpennedMaterialDTO.Instance.OnGetUserOpennedMaterialsByUserSuccess += FinishGettingUserMatsData;
+        UsersWithoutDTO.Instance.OnGUpdateCoinzSuccess += FinishUpdatingCoinz;
         //MinigamesDTO.Instance.OnGetAllMinigamesSuccess += FinishGettingMinigamesData;
 
     }
@@ -91,5 +92,21 @@ public class UserMaterialsRequest : MonoBehaviour
             ClosedMats[(int)mat.MaterialId - 1].SetActive(false);
             OpenedMats[(int)mat.MaterialId - 1].SetActive(true);
         }
+    }
+
+    private void FinishUpdatingCoinz()
+    {
+
+    }
+
+    public void IncreaseCoinz(int coinz)
+    {
+        UsersWithoutDTO.Instance.UpdateUserCoinz(new UsersWithout()
+        {
+            Username = username,
+            Coinz = (double)coinz + this.coinz,
+        });
+
+        UsersWithoutDTO.Instance.GetUser(Username);
     }
 }

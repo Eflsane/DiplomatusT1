@@ -3195,7 +3195,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &894657245
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5590,14 +5590,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   avatars:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  usernameText: {fileID: 0}
-  coinzText: {fileID: 0}
+  - {fileID: 894657246}
+  - {fileID: 998534835}
+  - {fileID: 1267831817}
+  usernameText: {fileID: 598465112}
+  coinzText: {fileID: 1756262623}
 --- !u!114 &1311310369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5883,7 +5880,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f43390e0e0836ef4a8d05372027b8154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dataURL: https://localhost:7191/api/Users
+  dataURL: http://cosmopedia.somee.com/WebApiAdoServer/api/Users
 --- !u!1 &1394924490
 GameObject:
   m_ObjectHideFlags: 0

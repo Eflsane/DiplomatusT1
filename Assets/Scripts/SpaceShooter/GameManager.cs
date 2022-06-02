@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,6 +16,9 @@ public class GameManager : MonoBehaviour
     public GameObject Scorecont;
     public GameObject ScoreBoard;
     int x;
+    DateTime beginDate;
+
+    public event Action<double, double, DateTime> OnGameOverApeared = (double coinz, double score, DateTime beginDate) => { };
 
     public enum GameManagerState 
     { 
@@ -31,6 +35,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         GMState = GameManagerState.Tutoria;
+        beginDate = DateTime.Now;
     }
 
     void UpdateGameManagerState() 
@@ -55,6 +60,8 @@ public class GameManager : MonoBehaviour
                 GameOver.SetActive(true);
 
                 Invoke("ChangeToAOState", 3f);
+
+                
 
                 break;
             case GameManagerState.AfterOver:
@@ -90,6 +97,8 @@ public class GameManager : MonoBehaviour
     {
         x = Score1.GetComponent<GameScore>().Score;
         ScoreRes.GetComponent<GameScore>().Score = x;
+
+        OnGameOverApeared?.Invoke(150.0, (double)x, beginDate);
     }
 
     public void ChangeToOState()
@@ -105,6 +114,7 @@ public class GameManager : MonoBehaviour
         GameOver.SetActive(false);
         Score.GetComponent<GameScore>().Score = 0;
         Score1.GetComponent<GameScore>().Score = 0;
+        
     }
 
 }
