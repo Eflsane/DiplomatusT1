@@ -95,7 +95,7 @@ public class UsersWithoutDTO : MonoBehaviour
         string input = Newtonsoft.Json.JsonConvert.SerializeObject(user);
         byte[] bytesIn = Encoding.UTF8.GetBytes(input);
 
-        UnityWebRequest request = new UnityWebRequest($"{dataURL}/update/{user.Username}", "put");
+        UnityWebRequest request = new UnityWebRequest($"{dataURL}/update/CCC/{user.Username}", "put");
         request.SetRequestHeader("Content-Type", "application/json");
         request.uploadHandler = new UploadHandlerRaw(bytesIn);
         request.downloadHandler = new DownloadHandlerBuffer();
