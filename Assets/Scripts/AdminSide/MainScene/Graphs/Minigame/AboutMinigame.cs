@@ -28,12 +28,12 @@ public class AboutMinigame : MonoBehaviour
     private UsersWithout currentUser;
     private List<Minigames> minigames;
     private List<UserMinigameStats> minigamesStatsByMinigame;
+    private List<UsersWithout> users;
 
     private int selectedMinigameIndex = -1;
 
     public TMP_Dropdown MinigamesDropdown { get => minigamesDropdown; private set => minigamesDropdown = value; }
     public List<TextMeshProUGUI> ParamsList { get => paramsList; private set => paramsList = value; }
-    public UsersWithout CurrentUser { get => currentUser; private set => currentUser = value; }
     public List<Minigames> Minigames { get => minigames; private set => minigames = value; }
     public List<UserMinigameStats> MinigamesStatsByMinigame { get => minigamesStatsByMinigame; private set => minigamesStatsByMinigame = value; }
 
@@ -54,6 +54,13 @@ public class AboutMinigame : MonoBehaviour
         this.Minigames = minigames;
 
         SetMinigamesDropdown();
+    }
+
+    private void GetAllUsersCount(List<UsersWithout> users)
+    {
+        this.users = users;
+
+        SetUsersData();
     }
 
     private void SetMinigamesDropdown()
@@ -104,10 +111,16 @@ public class AboutMinigame : MonoBehaviour
         //ParamsList[5].text = MinigamesStatsByMinigame.Min(x => x.UserScore).ToString();
     }
 
+    private void SetUsersData()
+    {
+        ParamsList[3].text = (minigamesStatsByMinigame.Count / users.Count).ToString("0.0");
+    }
+
     public void LoadMinigames()
     {
         CallMinigameController.Instance.OnDataMinigamesGetted += GetAllMinigames;
         CallMinigameController.Instance.OnDataUserMinigameStatsByMinigameGetted += GetUserMinigameStatsByMinigame;
+        CallMinigameController.Instance.OnDataUsersGetted += GetAllUsersCount;
     }
 
     public void SelectMinigame(int index)

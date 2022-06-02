@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -14,6 +15,7 @@ public class UserOpennedMaterialDTO : MonoBehaviour
     public event Action<List<UserOpennedMaterial>> OnGetUserOpennedMaterialsByMaterialSuccess = (List<UserOpennedMaterial> dbUserOpennedMaterials) => { };
     public event Action<List<UserOpennedMaterial>> OnGetUserOpennedMaterialsByUserSuccess = (List<UserOpennedMaterial> dbUserOpennedMaterials) => { };
     public event Action<List<UserOpennedMaterial>> OnGetUserOpennedMaterialsByUserMaterialSuccess = (List<UserOpennedMaterial> dbUserOpennedMaterials) => { };
+    public event Action OnAddUserOpennedMaterialSuccess = () => { };
     // Start is called before the first frame update
     void Awake()
     {
@@ -135,5 +137,36 @@ public class UserOpennedMaterialDTO : MonoBehaviour
         Debug.Log(userOpennedMaterials[0].MaterialId);
 
         OnGetUserOpennedMaterialsByUserMaterialSuccess?.Invoke(userOpennedMaterials);
+    }
+
+    public void AddUserOpennedMaterial(UserOpennedMaterial userOpennedMaterial)
+    {
+        Debug.Log("startAddMinigamesData");
+        StartCoroutine(AddUserOpennedMaterialCoroutine(userOpennedMaterial));
+    }
+
+    private IEnumerator AddUserOpennedMaterialCoroutine(UserOpennedMaterial userOpennedMaterial)
+    {
+        string input = Newtonsoft.Json.JsonConvert.SerializeObject(userOpennedMaterial);
+        byte[] bytesIn = Encoding.UTF8.GetBytes(input);
+
+        UnityWebRequest request = new UnityWebRequest($"{dataURL}/add", "post");
+        request.SetRequestHeader("Content-Type", "application/json");
+        request.uploadHandler = new UploadHandlerRaw(bytesIn);
+        request.downloadHandler = new DownloadHandlerBuffer();
+
+        yield return request.SendWebRequest();
+        if (request.isHttpError || request.isNetworkError)
+        {
+            Debug.Log("DataGetMess:" + request.error);
+            yield break;
+        }
+
+        Debug.Log("endDataGet:" + request.responseCode.ToString());
+
+        //Minigames minigame = Newtonsoft.Json.JsonConvert.DeserializeObject<Minigames>(request.downloadHandler.text);
+        //Debug.Log(minigame.Name);
+
+        OnAddUserOpennedMaterialSuccess?.Invoke();
     }
 }

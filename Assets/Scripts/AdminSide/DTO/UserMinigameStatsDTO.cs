@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -14,6 +15,7 @@ public class UserMinigameStatsDTO : MonoBehaviour
     public event Action<List<UserMinigameStats>> OnGetUserMinigameStatsByMinigameSuccess = (List<UserMinigameStats> dbUserMinigameStats) => { };
     public event Action<List<UserMinigameStats>> OnGetUserMinigameStatsByUserSuccess = (List<UserMinigameStats> dbUserMinigameStats) => { };
     public event Action<List<UserMinigameStats>> OnGetUserMinigameStatsByUserMinigameSuccess = (List<UserMinigameStats> dbUserMinigameStats) => { };
+    public event Action OnAddUserMinigameStatsSuccess = () => { };
     // Start is called before the first frame update
     void Awake()
     {
@@ -135,5 +137,36 @@ public class UserMinigameStatsDTO : MonoBehaviour
         Debug.Log(userMinigameStats[0].MinigameId);
 
         OnGetUserMinigameStatsByUserMinigameSuccess?.Invoke(userMinigameStats);
+    }
+
+    public void AddUserMinigameStats(UserMinigameStats userMinigameStats)
+    {
+        Debug.Log("startAddMinigamesData");
+        StartCoroutine(AddUserMinigameStatsCoroutine(userMinigameStats));
+    }
+
+    private IEnumerator AddUserMinigameStatsCoroutine(UserMinigameStats userMinigameStats)
+    {
+        string input = Newtonsoft.Json.JsonConvert.SerializeObject(userMinigameStats);
+        byte[] bytesIn = Encoding.UTF8.GetBytes(input);
+
+        UnityWebRequest request = new UnityWebRequest($"{dataURL}/add", "post");
+        request.SetRequestHeader("Content-Type", "application/json");
+        request.uploadHandler = new UploadHandlerRaw(bytesIn);
+        request.downloadHandler = new DownloadHandlerBuffer();
+
+        yield return request.SendWebRequest();
+        if (request.isHttpError || request.isNetworkError)
+        {
+            Debug.Log("DataGetMess:" + request.error);
+            yield break;
+        }
+
+        Debug.Log("endDataGet:" + request.responseCode.ToString());
+
+        //Minigames minigame = Newtonsoft.Json.JsonConvert.DeserializeObject<Minigames>(request.downloadHandler.text);
+        //Debug.Log(minigame.Name);
+
+        OnAddUserMinigameStatsSuccess?.Invoke();
     }
 }
