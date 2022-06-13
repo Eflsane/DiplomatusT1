@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.07233437, g: 0.06555762, b: 0.07554462, a: 1}
+  m_IndirectSpecularColor: {r: 0.07233437, g: 0.06555764, b: 0.07554463, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -566,7 +566,7 @@ MonoBehaviour:
     m_MinSize: 10
     m_MaxSize: 42
     m_Alignment: 4
-    m_AlignByGeometry: 0
+    m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -1722,7 +1722,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -241, y: 369}
+  m_AnchoredPosition: {x: -220, y: 363}
   m_SizeDelta: {x: -711.81885, y: -879.11676}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &428500424
@@ -1757,7 +1757,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: PEDIA
+  m_Text: Learn
 --- !u!222 &428500425
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4681,7 +4681,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -594.19995, y: 427.29993}
+  m_AnchoredPosition: {x: -594.19995, y: 400}
   m_SizeDelta: {x: -711.81885, y: -879.11676}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1381602303
@@ -4704,7 +4704,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 95ec3fdf24f8b7041a555b1e0c8f89de, type: 3}
+    m_Font: {fileID: 12800000, guid: 9df4f508b17b2d04eb36b9c3e00c03d6, type: 3}
     m_FontSize: 107
     m_FontStyle: 0
     m_BestFit: 0
@@ -6754,7 +6754,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9c2e8ea26de6d4b488afb72e5ed05852, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 529ee3471815fe142a87fe8275102bb5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
