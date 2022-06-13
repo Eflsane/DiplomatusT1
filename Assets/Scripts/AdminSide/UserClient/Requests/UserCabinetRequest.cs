@@ -72,8 +72,6 @@ public class UserCabinetRequest : MonoBehaviour
         birthDateText.text = user.DateOfBirth.ToShortDateString();
         registerDateText.text = user.RegisterDate.ToShortDateString();
 
-
-
         GendersDTO.Instance.GetGender(user.Gender);
         UserMinigameStatsDTO.Instance.GetUserMinigameStatsByUserMinigame(username, minigameID);
     }

@@ -12,6 +12,9 @@ public class CallUserController : MonoBehaviour
     public event Action<List<Minigames>> OnDataMinigamesGetted = (List<Minigames>  minigames) => { };
     public event Action<List<UserMinigameStats>> OnDataUserMinigameStatsByUserGetted = (List<UserMinigameStats> userMinigameStats) => { };
     public event Action<List<UserMinigameStats>> OnDataUserMinigameStatsByUserMinigameGetted = (List<UserMinigameStats> userMinigameStats) => { };
+    public event Action<List<Quizes>> OnDataQuizesGetted = (List<Quizes> quizes) => { };
+    public event Action<List<UserQuizStats>> OnDataUserQuizStatsByUserGetted = (List<UserQuizStats> userQuizStats) => { };
+    public event Action<List<UserQuizStats>> OnDataUserQuizStatsByUserQuizGetted = (List<UserQuizStats> userQuizStats) => { };
 
     private void Awake()
     {
@@ -31,6 +34,7 @@ public class CallUserController : MonoBehaviour
         UsersWithoutDTO.Instance.OnGetAllUsersSuccess += GetAllUsers;
         GendersDTO.Instance.OnGetAllGendersSuccess += GetAllGenders;
         MinigamesDTO.Instance.OnGetAllMinigamesSuccess += GetAllMinigames;
+        QuizesDTO.Instance.OnGetAllQuizesSuccess += GetAllQuizes;
 
         UsersWithoutDTO.Instance.GetAllUsers();
     }
@@ -58,6 +62,15 @@ public class CallUserController : MonoBehaviour
         OnDataMinigamesGetted?.Invoke(minigames);
 
         MinigamesDTO.Instance.OnGetAllMinigamesSuccess -= GetAllMinigames;
+
+        QuizesDTO.Instance.GetAllQuizes();
+    }
+
+    public void GetAllQuizes(List<Quizes> quizes)
+    {
+        OnDataQuizesGetted?.Invoke(quizes);
+
+        QuizesDTO.Instance.OnGetAllQuizesSuccess -= GetAllQuizes;
     }
 
     public void GetUserMinigameStatsByUserData(string username)
@@ -86,5 +99,33 @@ public class CallUserController : MonoBehaviour
         OnDataUserMinigameStatsByUserMinigameGetted?.Invoke(userMinigameStats);
 
         UserMinigameStatsDTO.Instance.OnGetUserMinigameStatsByUserMinigameSuccess -= GetUserMinigameStatsByUserMinigame;
+    }
+
+    public void GetUserQuizStatsByUserData(string username)
+    {
+        UserQuizStatsDTO.Instance.OnGetUserQuizStatsByUserSuccess += GetUserQuizStatsByUser;
+
+        UserQuizStatsDTO.Instance.GetUserQuizStatsByUser(username);
+    }
+
+    public void GetUserQuizStatsByUser(List<UserQuizStats> userQuizStats)
+    {
+        OnDataUserQuizStatsByUserGetted?.Invoke(userQuizStats);
+
+        UserQuizStatsDTO.Instance.OnGetUserQuizStatsByUserSuccess -= GetUserQuizStatsByUser;
+    }
+
+    public void GetUserQuizStatsByUserQuizData(string username, long id)
+    {
+        UserQuizStatsDTO.Instance.OnGetUserQuizStatsByUserQuizSuccess += GetUserQuizStatsByUserQuiz;
+
+        UserQuizStatsDTO.Instance.GetUserQuizStatsByUserQuiz(username, id);
+    }
+
+    public void GetUserQuizStatsByUserQuiz(List<UserQuizStats> userQuizStats)
+    {
+        OnDataUserQuizStatsByUserQuizGetted?.Invoke(userQuizStats);
+
+        UserQuizStatsDTO.Instance.OnGetUserQuizStatsByUserQuizSuccess -= GetUserQuizStatsByUserQuiz;
     }
 }

@@ -1233,7 +1233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 626ca31b4da961441ab465164515f9e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dataURL: https://localhost:7191/api/Admins
+  dataURL: http://cosmopedia.somee.com/WebApiAdoServer/api/Admins
 --- !u!1 &587259290
 GameObject:
   m_ObjectHideFlags: 0

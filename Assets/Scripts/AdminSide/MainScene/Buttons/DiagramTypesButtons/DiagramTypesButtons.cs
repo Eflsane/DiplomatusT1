@@ -10,6 +10,7 @@ public class DiagramTypesButtons : MonoBehaviour
     public event Action OnUserButtonClick = () => { };
     public event Action OnMinigameButtonClick = () => { };
     public event Action OnMaterialButtonClick = () => { };
+    public event Action OnQuizButtonClick = () => { };
 
     public void BasicButtonClick()
     {
@@ -31,5 +32,10 @@ public class DiagramTypesButtons : MonoBehaviour
     public void MaterialButtonClick()
     {
         OnMaterialButtonClick?.Invoke();
+    }
+
+    public void QuizButtonClick()
+    {
+        OnQuizButtonClick?.Invoke();
     }
 }

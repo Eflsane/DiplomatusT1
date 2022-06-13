@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a32ec57542c70c4abd5d25f7028243c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dataURL: http://cosmopedia.somee.com/WebApiAdoServer/api/UserMinigameStats
+  dataURL: https://localhost:7191/api/Admins/UserMinigameStats
 --- !u!114 &6514063
 MonoBehaviour:
   m_ObjectHideFlags: 0

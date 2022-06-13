@@ -18,6 +18,7 @@ public class MinigameButton : MonoBehaviour
         GetComponent<DiagramTypesButtons>().OnUserButtonClick += OnOtherButtonClick;
         GetComponent<DiagramTypesButtons>().OnMinigameButtonClick += MinigameButton_OnBasicButtonClick;
         GetComponent<DiagramTypesButtons>().OnMaterialButtonClick += OnOtherButtonClick;
+        GetComponent<DiagramTypesButtons>().OnQuizButtonClick += OnOtherButtonClick;
     }
 
     private void MinigameButton_OnBasicButtonClick()

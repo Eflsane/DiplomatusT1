@@ -3,36 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AgeSexButton : MonoBehaviour
+public class QuizButton : MonoBehaviour
 {
     [SerializeField]
-    GameObject asPanel;
+    GameObject quizPanel;
     [SerializeField]
-    Button asButton;
+    Button quizButton;
 
     // Start is called before the first frame update
     void Start()
     {
         GetComponent<DiagramTypesButtons>().OnBasicButtonClick += OnOtherButtonClick;
-        GetComponent<DiagramTypesButtons>().OnAgeSexButtonClick += ASButton_OnBasicButtonClick;
+        GetComponent<DiagramTypesButtons>().OnAgeSexButtonClick += OnOtherButtonClick;
         GetComponent<DiagramTypesButtons>().OnUserButtonClick += OnOtherButtonClick;
         GetComponent<DiagramTypesButtons>().OnMinigameButtonClick += OnOtherButtonClick;
         GetComponent<DiagramTypesButtons>().OnMaterialButtonClick += OnOtherButtonClick;
-        GetComponent<DiagramTypesButtons>().OnQuizButtonClick += OnOtherButtonClick;
+        GetComponent<DiagramTypesButtons>().OnQuizButtonClick += QuizButton_OnQuizButtonClick;
     }
 
-    private void ASButton_OnBasicButtonClick()
+    private void QuizButton_OnQuizButtonClick()
     {
-        asPanel.SetActive(true);
-        asButton.interactable = false;
+        quizPanel.SetActive(true);
+        quizButton.interactable = false;
 
-        CallChartAgeSexController.Instance.GetData();
+        CallQuizController.Instance.GetData();
     }
-
     private void OnOtherButtonClick()
     {
-        asPanel.SetActive(false);
-        asButton.interactable = true;
+        quizPanel.SetActive(false);
+        quizButton.interactable = true;
     }
 
     // Update is called once per frame
