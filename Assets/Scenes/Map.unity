@@ -801,7 +801,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 38.9, y: 164.3}
+  m_AnchoredPosition: {x: 38.9, y: 157.11}
   m_SizeDelta: {x: 718.2449, y: 100.795}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &69947925
@@ -825,19 +825,19 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 45
+    m_FontSize: 10
     m_FontStyle: 1
     m_BestFit: 1
-    m_MinSize: 2
-    m_MaxSize: 51
+    m_MinSize: 1
+    m_MaxSize: 29
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043B\u044E\u0434\u0435\u0439
-    \u0432\u0435\u0440\u044F\u0449\u0438\u0445 \u0447\u0442\u043E \u0417\u0435\u043C\u043B\u044F
+  m_Text: "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043B\u044E\u0434\u0435\u0439,
+    \u0432\u0435\u0440\u044F\u0449\u0438\u0445, \u0447\u0442\u043E \u0417\u0435\u043C\u043B\u044F
     \u043F\u043B\u043E\u0441\u043A\u0430\u044F: \n"
 --- !u!222 &69947926
 CanvasRenderer:
@@ -5922,8 +5922,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1051503939}
-        m_MethodName: 
-        m_Mode: 1
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5941,7 +5941,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1503305416}
         m_MethodName: SetActive
@@ -5985,7 +5985,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1828828639}
         m_MethodName: SetActive
@@ -5996,7 +5996,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 758488274}
         m_MethodName: SetActive
@@ -8348,6 +8348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c965904d488af3a4d828575fe8bef64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefUserName: CosmopediaSysUserName
 --- !u!1 &756662821
 GameObject:
   m_ObjectHideFlags: 0
@@ -8519,8 +8520,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1051503939}
-        m_MethodName: 
-        m_Mode: 1
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8538,7 +8539,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1503305416}
         m_MethodName: SetActive
@@ -18621,8 +18622,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 265.59998, y: -14}
-  m_SizeDelta: {x: 767.2355, y: 642.6266}
+  m_AnchoredPosition: {x: 276.9, y: -14}
+  m_SizeDelta: {x: 744.66235, y: 642.6266}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1831388237
 MonoBehaviour:
@@ -18650,7 +18651,7 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 2
     m_MaxSize: 29
-    m_Alignment: 1
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0

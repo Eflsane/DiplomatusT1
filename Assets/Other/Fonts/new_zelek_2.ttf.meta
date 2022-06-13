@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 9df4f508b17b2d04eb36b9c3e00c03d6
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: New_Zelek
+  fontNames:
+  - New_Zelek
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 6b6e5fb352a13ff4987e1459613add49, type: 3}
+  - {fileID: 12800000, guid: 95ec3fdf24f8b7041a555b1e0c8f89de, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
