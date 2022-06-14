@@ -29,8 +29,6 @@ public class CallQuizController : MonoBehaviour
     public void GetData()
     {
         QuizesDTO.Instance.OnGetAllQuizesSuccess += GetAllQuizes;
-        UsersWithoutDTO.Instance.OnGetAllUsersSuccess += GetAllUsers;
-        GendersDTO.Instance.OnGetAllGendersSuccess += GetAllGenders;
 
         QuizesDTO.Instance.GetAllQuizes();
     }
@@ -50,6 +48,7 @@ public class CallQuizController : MonoBehaviour
 
         UsersWithoutDTO.Instance.OnGetAllUsersSuccess -= GetAllUsers;
 
+        GendersDTO.Instance.OnGetAllGendersSuccess += GetAllGenders;
         GendersDTO.Instance.GetAllGenders();
     }
 
@@ -73,6 +72,7 @@ public class CallQuizController : MonoBehaviour
 
         UserQuizStatsDTO.Instance.OnGetUserQuizStatsByQuizSuccess -= GetUserQuizStatsByQuiz;
 
+        UsersWithoutDTO.Instance.OnGetAllUsersSuccess += GetAllUsers;
         UsersWithoutDTO.Instance.GetAllUsers();
     }
 

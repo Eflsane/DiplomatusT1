@@ -28,9 +28,7 @@ public class CallMinigameController : MonoBehaviour
 
     public void GetData()
     {
-        MinigamesDTO.Instance.OnGetAllMinigamesSuccess += GetAllMinigames;
-        UsersWithoutDTO.Instance.OnGetAllUsersSuccess += GetAllUsers;
-        GendersDTO.Instance.OnGetAllGendersSuccess += GetAllGenders;     
+        MinigamesDTO.Instance.OnGetAllMinigamesSuccess += GetAllMinigames;   
 
         MinigamesDTO.Instance.GetAllMinigames();
     }
@@ -40,8 +38,6 @@ public class CallMinigameController : MonoBehaviour
         OnDataMinigamesGetted?.Invoke(minigames);
 
         MinigamesDTO.Instance.OnGetAllMinigamesSuccess -= GetAllMinigames;
-
-        UsersWithoutDTO.Instance.GetAllUsers();
     }
 
     public void GetAllUsers(List<UsersWithout> usersWithout)
@@ -50,6 +46,7 @@ public class CallMinigameController : MonoBehaviour
 
         UsersWithoutDTO.Instance.OnGetAllUsersSuccess -= GetAllUsers;
 
+        GendersDTO.Instance.OnGetAllGendersSuccess += GetAllGenders;
         GendersDTO.Instance.GetAllGenders();
     }
 
@@ -72,6 +69,9 @@ public class CallMinigameController : MonoBehaviour
         OnDataUserMinigameStatsByMinigameGetted?.Invoke(userMinigameStats);
 
         UserMinigameStatsDTO.Instance.OnGetUserMinigameStatsByMinigameSuccess -= GetUserMinigameStatsByMinigame;
+
+        UsersWithoutDTO.Instance.OnGetAllUsersSuccess += GetAllUsers;
+        UsersWithoutDTO.Instance.GetAllUsers();
     }
 
     public void UpdateMinigamesData(Minigames minigame)

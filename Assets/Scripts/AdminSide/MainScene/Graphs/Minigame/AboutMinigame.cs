@@ -113,7 +113,7 @@ public class AboutMinigame : MonoBehaviour
 
     private void SetUsersData()
     {
-        ParamsList[3].text = (minigamesStatsByMinigame.Count / users.Count).ToString("0.0");
+        ParamsList[3].text = ((float)minigamesStatsByMinigame.Count / (float)users.Count).ToString("0.0");
     }
 
     public void LoadMinigames()
