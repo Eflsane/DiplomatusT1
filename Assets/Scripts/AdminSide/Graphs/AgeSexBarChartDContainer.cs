@@ -50,7 +50,7 @@ public class AgeSexBarChartDContainer : MonoBehaviour
         for(int i = 0; i < genders.Count; i++)
         {
             var ld = Instantiate(barChart, this.transform, false);
-            ld.GetComponentsInChildren<TMPro.TextMeshProUGUI>()[1].text = genders[i].Gender;
+            ld.GetComponentsInChildren<TMPro.TextMeshProUGUI>()[1].text = genders[i].Gender.Contains("Female") ? "Женский" : "Мужской";
             ld.GetComponentInChildren<CallBarChartAgeSex>().GenerateBarChartValues(users, genders[i]);
         }
     }

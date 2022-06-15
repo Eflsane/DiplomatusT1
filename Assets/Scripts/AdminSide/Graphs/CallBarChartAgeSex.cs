@@ -58,7 +58,28 @@ public class CallBarChartAgeSex : MonoBehaviour
 
         foreach(var item in charts)
         {
-            agenda[item.Key] = Enum.GetName(typeof(AgeTypes), item.Key + 1);
+            switch (Enum.GetName(typeof(AgeTypes), item.Key + 1))
+            {
+                case "from0To3":
+                    agenda[item.Key] = "от 0 до 3";
+                    break;
+                case "from4To7":
+                    agenda[item.Key] = "от 4 до 7";
+                    break;
+                case "from8To12":
+                    agenda[item.Key] = "от 8 до 12";
+                    break;
+                case "from13To16":
+                    agenda[item.Key] = "от 13 до 16";
+                    break;
+                case "from17To18":
+                    agenda[item.Key] = "от 17 до 18";
+                    break;
+                case "from19To":
+                    agenda[item.Key] = "старше 19";
+                    break;
+            }
+            //agenda[item.Key] = Enum.GetName(typeof(AgeTypes), item.Key + 1);
         }
 
         var barCart = GetComponentInParent<BarChart>();

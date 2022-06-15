@@ -58,8 +58,6 @@ public class AboutQuiz : MonoBehaviour
     private void GetAllUsersCount(List<UsersWithout> users)
     {
         this.users = users;
-
-        SetUsersData();
     }
 
     private void SetQuizesDropdown()
@@ -82,7 +80,7 @@ public class AboutQuiz : MonoBehaviour
         SetUsersQuizData();
 
         scoreChart.GetComponentInChildren<CallMonoColorBarChartQuizScore>().GetData(QuizStatsByQuiz);
-        timechart.GetComponentInChildren<CallMonoColorBarChartQuizTime>().GetData(QuizStatsByQuiz);
+        timechart.GetComponentInChildren<CallMonoColorBarChartQuizTime>().GetData(QuizStatsByQuiz, Quizes[selectedQuizIndex].MaxScore);
     }
 
     private void SetQuizData()
@@ -100,23 +98,22 @@ public class AboutQuiz : MonoBehaviour
 
         float midTime = 0.0f;
         float midScore = 0.0f;
+        int tries = 0;
         foreach (var userQuiz in QuizStatsByQuiz)
         {
             midTime += (float)(userQuiz.EndTime - userQuiz.BeginTime).TotalSeconds;
             midScore += (float)userQuiz.UserScore;
+            if (userQuiz.UserScore >= quizes[selectedQuizIndex].MaxScore)
+                tries++;
         }
         midTime = midTime / (float)QuizStatsByQuiz.Count;
         midScore = midScore / (float)QuizStatsByQuiz.Count;
         ParamsList[1].text = $"{Mathf.FloorToInt(midTime / 60).ToString("0")}:{Mathf.FloorToInt(midTime % 60).ToString("0")}";
         ParamsList[2].text = midScore.ToString("0.0");
+        ParamsList[3].text = $"{tries.ToString()} ({tries / QuizStatsByQuiz.Count * 100}%)";
 
         //ParamsList[4].text = MinigamesStatsByMinigame.Max(x => x.UserScore).ToString();
         //ParamsList[5].text = MinigamesStatsByMinigame.Min(x => x.UserScore).ToString();
-    }
-
-    private void SetUsersData()
-    {
-        ParamsList[3].text = ((float)QuizStatsByQuiz.Count / (float)users.Count).ToString("0.0");
     }
 
     public void LoadQuizes()

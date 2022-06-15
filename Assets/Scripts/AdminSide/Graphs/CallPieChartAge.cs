@@ -69,7 +69,28 @@ public class CallPieChartAge : MonoBehaviour
         string[] agenda = new string[charts.Count];
         for (int i = 0; i < agenda.Length; i++)
         {
-            agenda[i] = Enum.GetName(typeof(AgeTypes), i + 1);
+            switch(Enum.GetName(typeof(AgeTypes), i + 1))
+            {
+                case "from0To3":
+                    agenda[i] = "от 0 до 3";
+                    break;
+                case "from4To7":
+                    agenda[i] = "от 4 до 7";
+                    break;
+                case "from8To12":
+                    agenda[i] = "от 8 до 12";
+                    break;
+                case "from13To16":
+                    agenda[i] = "от 13 до 16";
+                    break;
+                case "from17To18":
+                    agenda[i] = "от 17 до 18";
+                    break;
+                case "from19To":
+                    agenda[i] = "старше 19";
+                    break;
+            }
+            //agenda[i] = Enum.GetName(typeof(AgeTypes), i + 1);
         }
 
         var pieChart = GetComponentInParent<PieChart>();

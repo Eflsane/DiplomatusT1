@@ -48,7 +48,7 @@ public class CallMonoColorBarChartQuizScore : MonoBehaviour
             days = (DateTime.Now - userQuizStats[i].EndTime).Days;
             if (days < 10)
             {
-                charts[(long)(10 - 1 - days)] += (float)userQuizStats[i].UserScore;
+                charts[(long)(10 - 1 - days)]++;
             }
         }
 

@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a32ec57542c70c4abd5d25f7028243c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dataURL: https://localhost:7191/api/Admins/UserMinigameStats
+  dataURL: http://cosmopedia.somee.com/WebApiAdoServer/api/UserMinigameStats
 --- !u!114 &6514063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1976,10 +1976,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f5e9d08496efc45be79515b5d89b0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  avatars: []
-  username: 
-  usernameText: {fileID: 0}
-  coinzText: {fileID: 0}
   coinz: 0
 --- !u!114 &798837649
 MonoBehaviour:

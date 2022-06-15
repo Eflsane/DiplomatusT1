@@ -82,15 +82,19 @@ public class AboutUserQuiz : MonoBehaviour
 
         float midTime = 0.0f;
         float midScore = 0.0f;
-        foreach (var userMinigame in quizesStatsByUserQuiz)
+        int tries = 0;
+        foreach (var userQuiz in quizesStatsByUserQuiz)
         {
-            midTime += (float)(userMinigame.EndTime - userMinigame.BeginTime).TotalSeconds;
-            midScore += (float)userMinigame.UserScore;
+            midTime += (float)(userQuiz.EndTime - userQuiz.BeginTime).TotalSeconds;
+            midScore += (float)userQuiz.UserScore;
+            if(userQuiz.UserScore >= quizes[selectedQuizIndex].MaxScore)
+                tries++;
         }
         midTime = midTime / (float)quizesStatsByUserQuiz.Count;
         midScore = midScore / (float)quizesStatsByUserQuiz.Count;
-        ParamsList[3].text = $"{Mathf.FloorToInt(midTime / 60).ToString("0")}:{Mathf.FloorToInt(midTime % 60).ToString("0")}";
+        ParamsList[7].text = $"{Mathf.FloorToInt(midTime / 60).ToString("0")}:{Mathf.FloorToInt(midTime % 60).ToString("0")}";
         ParamsList[6].text = midScore.ToString();
+        ParamsList[3].text = $"{tries.ToString()} ({tries / quizesStatsByUserQuiz.Count * 100}%)";
 
         ParamsList[4].text = quizesStatsByUserQuiz.Max(x => x.UserScore).ToString();
         ParamsList[5].text = quizesStatsByUserQuiz.Min(x => x.UserScore).ToString();

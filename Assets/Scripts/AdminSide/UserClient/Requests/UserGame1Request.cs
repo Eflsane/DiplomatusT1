@@ -6,22 +6,18 @@ using UnityEngine.UI;
 
 public class UserGame1Request : MonoBehaviour
 {
-    [SerializeField]
-    private List<Image> avatars;
-    [SerializeField]
     private string username;
-
-    [SerializeField]
-    private Text usernameText;
-    [SerializeField]
-    private Text coinzText;
 
     private GoBack manager;
     private GameManager gameManager;
 
 
     public double coinz;
-    
+    double score = 0;
+    DateTime beginDate;
+
+
+
     public string Username { get => username; private set => username = value; }
 
     // Start is called before the first frame update
@@ -65,6 +61,12 @@ public class UserGame1Request : MonoBehaviour
             Coinz = coinz + this.coinz,
         });
 
+        this.score = score;
+        this.beginDate = beginDate;
+    }
+
+    private void FinishUpdatingCoins()
+    {
         UserMinigameStatsDTO.Instance.AddUserMinigameStats(new UserMinigameStats()
         {
             Username = username,
@@ -72,12 +74,9 @@ public class UserGame1Request : MonoBehaviour
             UserScore = score,
             BeginTime = beginDate,
             EndTime = DateTime.Now,
-            
+
         });
-    }
 
-    private void FinishUpdatingCoins()
-    {
-
+       
     }
 }

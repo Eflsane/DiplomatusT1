@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -37,6 +38,9 @@ public class UserMaterialsRequest : MonoBehaviour
 
     public double coinz;
 
+    DateTime beginDate;
+    double score = 0;
+
     public List<GameObject> ClosedMats { get => closedMats; private set => closedMats = value; }
     public List<GameObject> OpenedMats { get => openedMats; private set => openedMats = value; }
     public string Username { get => username; private set => username = value; }
@@ -60,11 +64,12 @@ public class UserMaterialsRequest : MonoBehaviour
         Username = PlayerPrefs.GetString(manager.prefUserName);
 
         UsersWithoutDTO.Instance.OnGetUserSuccess += FinishGettingData;
-        UsersWithoutDTO.Instance.GetUser(Username);
-
         UserOpennedMaterialDTO.Instance.OnGetUserOpennedMaterialsByUserSuccess += FinishGettingUserMatsData;
         UsersWithoutDTO.Instance.OnGUpdateCoinzSuccess += FinishUpdatingCoinz;
         //MinigamesDTO.Instance.OnGetAllMinigamesSuccess += FinishGettingMinigamesData;
+        UserQuizStatsDTO.Instance.OnAddUserQuizStatsSuccess += FinishAddUserQuizStats;
+
+        UsersWithoutDTO.Instance.GetUser(Username);
 
     }
 
@@ -74,7 +79,8 @@ public class UserMaterialsRequest : MonoBehaviour
         usernameText.text = user.Username;
         coinzText.text = user.Coinz.ToString();
         coinz = user.Coinz;
-
+        UsersWithoutDTO.Instance.OnGetUserSuccess -= FinishGettingData;
+        UsersWithoutDTO.Instance.OnGetUserSuccess += UpdateIncreasedCoinz;
         UserOpennedMaterialDTO.Instance.GetUserOpennedMaterialssByUser(Username);
     }
 
@@ -108,5 +114,43 @@ public class UserMaterialsRequest : MonoBehaviour
         });
 
         UsersWithoutDTO.Instance.GetUser(Username);
+    }
+
+    public void UpdateIncreasedCoinz(UsersWithout user)
+    {
+        coinzText.text = user.Coinz.ToString();
+        coinz = user.Coinz;
+    }
+
+    public void AddUserQuizStats(int quizID)
+    {
+        UserQuizStatsDTO.Instance.AddUserQuizStats(new UserQuizStats()
+        {
+            Username = username,
+            QuizID = quizID,
+            BeginTime = beginDate,
+            EndTime = DateTime.Now,
+            UserScore = (int)score
+        });
+    }
+
+    public void FinishAddUserQuizStats()
+    {
+        if(score >= 2) //this is just questions number in our 
+        {
+            IncreaseCoinz(50);
+        }
+
+        score = 0;
+    }
+
+    public void IncreaseScore()
+    {
+        score++;
+    }
+
+    public void StartQuiz()
+    {
+        beginDate = DateTime.Now;
     }
 }

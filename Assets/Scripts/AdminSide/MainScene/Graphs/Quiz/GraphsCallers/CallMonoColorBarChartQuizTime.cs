@@ -10,14 +10,17 @@ public class CallMonoColorBarChartQuizTime : MonoBehaviour
 
     private List<UserQuizStats> userQuizStats;
 
+    private int maxScore;
+
     private void Start()
     {
 
     }
 
-    public void GetData(List<UserQuizStats> userQuizStats)
+    public void GetData(List<UserQuizStats> userQuizStats, int maxScore)
     {
         this.userQuizStats = userQuizStats;
+        this.maxScore = maxScore;
         GenerateMonoColorBarChartValues();
     }
 
@@ -46,9 +49,9 @@ public class CallMonoColorBarChartQuizTime : MonoBehaviour
         {
             double days = 0;
             days = (DateTime.Now - userQuizStats[i].EndTime).Days;
-            if (days < 10)
+            if (days < 10 && userQuizStats[i].UserScore >= maxScore)
             {
-                charts[(long)(10 - 1 - days)] += (float)(userQuizStats[i].EndTime - userQuizStats[i].BeginTime).TotalSeconds;
+                charts[(long)(10 - 1 - days)]++;
             }
         }
 

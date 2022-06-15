@@ -7,6 +7,7 @@ public class AddTypesButtons : MonoBehaviour
 {
     public event Action OnMinigameButtonClick = () => { };
     public event Action OnMaterialsButtonClick = () => { };
+    public event Action OnQuizesButtonClick = () => { };
 
     public void MinigamesButtonClick()
     {
@@ -15,5 +16,10 @@ public class AddTypesButtons : MonoBehaviour
     public void MaterialButtonClick()
     {
         OnMaterialsButtonClick?.Invoke();
+    }
+
+    public void QuizButtonClick()
+    {
+        OnQuizesButtonClick?.Invoke();
     }
 }

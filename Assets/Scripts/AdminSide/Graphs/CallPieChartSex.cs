@@ -138,7 +138,10 @@ public class CallPieChartSex : MonoBehaviour
         string[] agenda = new string[genders.Count];
         for(int i = 0; i < agenda.Length; i++)
         {
-            agenda[i] = genders[i].Gender;
+            if(genders[i].Gender.Contains("Female"))
+                agenda[i] = "Женский";
+            else
+                agenda[i] = "Мужской";
         }
 
         var pieChart = GetComponentInParent<PieChart>();

@@ -15,6 +15,7 @@ public class AddMaterialButton : MonoBehaviour
     {
         GetComponent<AddTypesButtons>().OnMinigameButtonClick += OnOtherButtonClick;
         GetComponent<AddTypesButtons>().OnMaterialsButtonClick += AddMaterialButton_OnBasicButtonClick;
+        GetComponent<AddTypesButtons>().OnQuizesButtonClick += OnOtherButtonClick;
     }
 
     private void AddMaterialButton_OnBasicButtonClick()
