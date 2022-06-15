@@ -11,11 +11,13 @@ public class UserMaterialBuyerRequest : MonoBehaviour
     {
         if (UserMaterialsRequest.Instance.coinz >= price)
         {
+            UsersWithoutDTO.Instance.OnGUpdateCoinzSuccess += FinishBoingWithCoinz;
             UsersWithoutDTO.Instance.UpdateUserCoinz(new UsersWithout()
             {
                 Username = UserMaterialsRequest.Instance.Username,
                 Coinz = UserMaterialsRequest.Instance.coinz - price,
             });
+
 
             UserOpennedMaterialDTO.Instance.AddUserOpennedMaterial(new UserOpennedMaterial()
             {
@@ -24,9 +26,23 @@ public class UserMaterialBuyerRequest : MonoBehaviour
                 OpenningDate = DateTime.Now,
             });
 
-            UsersWithoutDTO.Instance.GetUser(UserMaterialsRequest.Instance.Username);
+            
+
             //UserMaterialsRequest.Instance.OpenedMats[matID - 1].SetActive(true);
             //UserMaterialsRequest.Instance.OpenedMats[matID - 1].SetActive(false);
         }
+    }
+
+    private void FinishBoingWithCoinz()
+    {
+        UsersWithoutDTO.Instance.OnGUpdateCoinzSuccess -= FinishBoingWithCoinz;
+
+        UsersWithoutDTO.Instance.OnGetUserSuccess += FinishUpdatingCoinz;
+        UsersWithoutDTO.Instance.GetUser(UserMaterialsRequest.Instance.Username);
+    }
+
+    private void FinishUpdatingCoinz(UsersWithout user)
+    {
+        UserMaterialsRequest.Instance.UpdateIncreasedCoinz(user);
     }
 }

@@ -56,6 +56,6 @@ public class AdminRegister : MonoBehaviour
 
         Debug.Log(adminsWithout.LastLoginDate);
 
-        SceneManager.LoadScene(8);
+        SceneManager.LoadScene(1);
     }
 }
