@@ -102,7 +102,7 @@ public class UserMaterialsRequest : MonoBehaviour
 
     private void FinishUpdatingCoinz()
     {
-
+        UsersWithoutDTO.Instance.GetUser(Username);
     }
 
     public void IncreaseCoinz(int coinz)
@@ -113,7 +113,7 @@ public class UserMaterialsRequest : MonoBehaviour
             Coinz = (double)coinz + this.coinz,
         });
 
-        UsersWithoutDTO.Instance.GetUser(Username);
+        
     }
 
     public void UpdateIncreasedCoinz(UsersWithout user)

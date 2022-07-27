@@ -110,7 +110,7 @@ public class AboutQuiz : MonoBehaviour
         midScore = midScore / (float)QuizStatsByQuiz.Count;
         ParamsList[1].text = $"{Mathf.FloorToInt(midTime / 60).ToString("0")}:{Mathf.FloorToInt(midTime % 60).ToString("0")}";
         ParamsList[2].text = midScore.ToString("0.0");
-        ParamsList[3].text = $"{tries.ToString()} ({tries / QuizStatsByQuiz.Count * 100}%)";
+        ParamsList[3].text = $"{tries.ToString()} ({((float)tries / (float)QuizStatsByQuiz.Count * 100).ToString("0")}%)";
 
         //ParamsList[4].text = MinigamesStatsByMinigame.Max(x => x.UserScore).ToString();
         //ParamsList[5].text = MinigamesStatsByMinigame.Min(x => x.UserScore).ToString();
